@@ -15,6 +15,8 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
+      'src/parser.js',
+      'src/SQLParser.js',
       'src/**/*.js',
       'test/**/*Spec.js'
     ],

@@ -1,0 +1,19 @@
+{
+  "name": "SimpleSQLEngine",
+  "version": "0.0.1",
+  "description": "Simple SQL Engine",
+  "main": "dist",
+  "private": true,
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "test"
+  },
+  "author": "ruslan.kesheshyan",
+  "license": "ISC",
+  "devDependencies": {
+    "gulp": "^3.8.10",
+    "gulp-concat": "^2.4.3"
+  }
+}

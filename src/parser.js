@@ -22,6 +22,8 @@
     var exec = this.exec;
 
     return new Pattern (function (str, pos) {
+      pos = pos || 0;
+
       var result = exec(str, pos);
 
       return result && {
@@ -44,6 +46,7 @@
      */
     txt: function (text) {
       return new Pattern(function (str, pos) {
+        pos = pos || 0;
         if (str.substr(pos, text.length) === text) {
           return {
             res: text,
@@ -60,6 +63,7 @@
      */
     rgx: function (regexp) {
       return new Pattern(function (str, pos) {
+        pos = pos || 0;
         var result = regexp.exec(str.slice(pos));
 
         if (result && result.index === 0) {
@@ -79,6 +83,7 @@
     opt: function (pattern) {
       return new Pattern(function (str, pos) {
         var result = pattern.exec(str, pos);
+        pos = pos || 0;
 
         if (!result) {
           return {
@@ -99,6 +104,8 @@
       var patterns = Array.prototype.slice.call(arguments, 0);
 
       return new Pattern(function (str, pos) {
+        pos = pos || 0;
+
         for (var result, i = 0; i < patterns.length; i++) {
           result = patterns[i].exec(str, pos);
           if (result) {
@@ -117,6 +124,8 @@
       var patterns = Array.prototype.slice.call(arguments, 0);
 
       return new Pattern(function (str, pos) {
+        pos = pos || 0;
+
         var i,
           r,
           end = pos,
@@ -147,9 +156,13 @@
     rep: function(pattern, separator) {
       var separated = !separator ?
         pattern :
-        this.seq(separator, pattern).then(function (result) {return result[1]});
+        this.seq(separator, pattern).then(function (result) {
+          return result[1];
+        });
 
       return new Pattern(function (str, pos) {
+        pos = pos || 0;
+
         var end = pos,
           r = pattern.exec(str, end),
           result = [];
