@@ -257,6 +257,9 @@
       fieldsNum = select.fields.length;
 
       return function (data) {
+        if (select.fields === '*') {
+          return data;
+        }
         return data.map(function (row) {
           var resultRow, fieldName;
 

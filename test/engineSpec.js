@@ -136,6 +136,17 @@ describe('Engine', function () {
     ]);
   });
 
+  it('should SELECT all columns when *', function(){
+    var actual = engine.execute('SELECT * FROM movie');
+    expect(actual).toEqual([
+      { 'movie.id': 1, 'movie.name': 'Avatar', 'movie.directorID': 1 },
+      { 'movie.id': 2, 'movie.name': 'Titanic', 'movie.directorID': 1 },
+      { 'movie.id': 3, 'movie.name': 'Infamous', 'movie.directorID': 2 },
+      { 'movie.id': 4, 'movie.name': 'Skyfall', 'movie.directorID': 3 },
+      { 'movie.id': 5, 'movie.name': 'Aliens', 'movie.directorID': 1 }
+    ]);
+  });
+
   it('should apply WHERE', function(){
     var actual = engine.execute('SELECT movie.name FROM movie WHERE movie.directorID = 1');
     expect(actual).toEqual([
