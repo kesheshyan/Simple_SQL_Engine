@@ -226,10 +226,7 @@
 
       // String
       var str = p.rgx(/(["'])(.*)[^\\]\1/).then(function (res) {
-        res = res.substring(1, res.length - 1);
-        // Escaping 2 single quotes as a one quote
-        res = res.replace('\'\'', '\'');
-        return res;
+        return res.substring(1, res.length - 1);
       });
 
       // Number
