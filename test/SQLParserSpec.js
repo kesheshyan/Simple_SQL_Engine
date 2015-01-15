@@ -15,6 +15,8 @@ describe('SQLParser', function () {
     expect(parser.parse.str.exec("'Daniel Craig' not a sting", 0).res).toEqual("Daniel Craig");
     expect(parser.parse.str.exec("'Daniel Craig not a sting", 0)).toBeUndefined();
     expect(parser.parse.str.exec('"Daniel \'Craig\'" not a sting', 0).res).toEqual("Daniel 'Craig'");
+    expect(parser.parse.str.exec('"Daniel \"Craig\""', 0).res).toEqual("Daniel \"Craig\"");
+    expect(parser.parse.str.exec("'Daniel \'Craig\''", 0).res).toEqual("Daniel \'Craig\'");
     expect(parser.parse.str.exec('\"Daniel\"', 0).res).toEqual("Daniel");
   });
 
@@ -246,4 +248,5 @@ describe('SQLParser', function () {
       }
     });
   });
+
 });

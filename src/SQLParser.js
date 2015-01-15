@@ -34,7 +34,7 @@
       var comma = p.txt(',');
 
       // String
-      var str = p.rgx(/(["'])(.*?)\1/).then(function (res) {
+      var str = p.rgx(/(["'])(.*)[^\\]\1/).then(function (res) {
         return res.substring(1, res.length - 1);
       });
 
@@ -145,7 +145,6 @@
           }
         };
       });
-
 
       // Join section
       var JOIN_EXP = p.seq(
